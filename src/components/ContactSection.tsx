@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,9 +42,9 @@ const ContactSection: React.FC = () => {
     },
     { 
       name: "Instagram", 
-      icon: <Instagram className="w-5 h-5" />, 
+      icon: <Instagram className="w-5 h-5 text-white drop-shadow-sm" />, 
       url: "https://www.instagram.com/swati_rwt22?igsh=MWV3eTczNGt1aGJ2NA==",
-      color: "bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45]"
+      color: "bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF]"
     },
     { 
       name: "Email", 
@@ -170,11 +169,14 @@ const ContactSection: React.FC = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full text-white flex items-center justify-center shadow-md hover-scale"
-                    aria-label={social.name}
-                    style={{ background: social.color.startsWith('bg-[') ? social.color.slice(4, -1) : undefined }}
-                    // For gradient backgrounds, we need to handle it differently
-                    {...(social.color.startsWith('bg-gradient') ? {} : { className: `w-12 h-12 rounded-full text-white flex items-center justify-center shadow-md hover-scale ${social.color}` })}
+                    className={`w-12 h-12 rounded-full flex items-center justify-center shadow-md hover-scale ${
+                      social.color.startsWith('bg-gradient') ? social.color : ''
+                    }`}
+                    style={
+                      social.color.startsWith('bg-[') 
+                        ? { background: social.color.slice(4, -1) }
+                        : undefined
+                    }
                   >
                     {social.icon}
                   </a>
